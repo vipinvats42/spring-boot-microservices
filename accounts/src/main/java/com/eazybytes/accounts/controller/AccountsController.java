@@ -4,11 +4,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-class AccountController{
+public class AccountsController {
 
-    @GetMapping("/hello")
-    public String sayHello(){
-        return "Hello vipin from Account Service!";
-    }
+@GetMapping("sayHello")
+public String sayHello(){
+    return "Hi world";
+}
 
 }
