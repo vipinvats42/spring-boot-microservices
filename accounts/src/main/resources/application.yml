@@ -15,7 +15,5 @@ jpa:
   hibernate:
     ddl-auto: update
     show-sql: true      
-
-
-
-spring.application.name=accounts
+application:
+  name:accounts

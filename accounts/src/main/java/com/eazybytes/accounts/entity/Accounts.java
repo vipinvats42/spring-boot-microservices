@@ -1,11 +1,8 @@
 package com.eazybytes.accounts.entity;
 
-import org.hibernate.annotations.GenericGenerator;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,7 +24,7 @@ public class Accounts extends BaseEnity{
 
     @Column(name = "account_number")
     @Id
-    private Long accountNumber;
+    private long accountNumber;
 
     @Column(name = "account_type")
     private String accountType;
