@@ -7,10 +7,13 @@ import java.util.Random;
 import org.springframework.stereotype.Service;
 
 import com.eazybytes.accounts.constants.AccountsConstants;
+import com.eazybytes.accounts.dto.AccountsDTO;
 import com.eazybytes.accounts.dto.CustomerDTO;
 import com.eazybytes.accounts.entity.Accounts;
 import com.eazybytes.accounts.entity.Customer;
 import com.eazybytes.accounts.exception.CustomerAlreadyException;
+import com.eazybytes.accounts.exception.ResourceNotfoundexception;
+import com.eazybytes.accounts.mapper.AccountsMapper;
 import com.eazybytes.accounts.mapper.CustomerMapper;
 import com.eazybytes.accounts.repository.AccountsRepository;
 import com.eazybytes.accounts.repository.CustomerRepository;
@@ -63,6 +66,30 @@ public class AccountServiceImpl implements IAccountService {
         newAccounts.setCreatedAt(LocalDateTime.now());
         newAccounts.setCreatedBy("Anonymous");
         return newAccounts;
+
+    }
+
+
+/*************  ✨ Codeium Command ⭐  *************/
+    /**
+     * This method takes mobile number as input and return the customer details
+     * @param mobileNumber
+     * @return
+/******  74003ea9-2c7f-4fcc-a2ea-b01f7bd6aafc  *******/
+    @Override
+    public CustomerDTO fetchAccount(String mobileNumber) {
+     Customer customer=  customerRepository.findByMobileNumber(mobileNumber).orElseThrow(
+        ()-> new ResourceNotfoundexception("customer", "mobileNumber", mobileNumber)
+     );
+
+     Accounts accounts=  accountsRepository.findByCustomerId(customer.getCustomerId()).orElseThrow(
+        ()-> new ResourceNotfoundexception("Account", "customerId", customer.getCustomerId().toString())
+     );
+
+    CustomerDTO customerDTO= CustomerMapper.mapToCustomerDTO(customer, new CustomerDTO());  
+    customerDTO.setAccountsDTO(AccountsMapper.mapToAccountsDTO(accounts, new AccountsDTO()));
+
+    return customerDTO;
 
     }
     
