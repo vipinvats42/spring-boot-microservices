@@ -19,4 +19,18 @@ public interface IAccountService {
      * @return
      */
     CustomerDTO fetchAccount(String mobileNumber);
+
+
+
+    /**
+     * @param customerDTO
+     * @return
+     */
+    boolean updateAccount(CustomerDTO customerDTO);
+
+    /**
+     * @param mobileNumber
+     * @return
+     */
+    boolean deleteAccount(String mobileNumber);
 }
