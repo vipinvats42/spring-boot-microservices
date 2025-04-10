@@ -46,8 +46,9 @@ public class AccountServiceImpl implements IAccountService {
         throw new CustomerAlreadyException("Customer already registered with mobile number "+customerDTO.getMobileNumber());
        }
 
-        customer.setCreatedAt(LocalDateTime.now());
-        customer.setCreatedBy("Anonymous");
+       // this is automatically managed by spring auditor
+        // customer.setCreatedAt(LocalDateTime.now());
+        // customer.setCreatedBy("Anonymous");
 
         Customer savedCustomer=customerRepository.save(customer);
 
@@ -63,8 +64,10 @@ public class AccountServiceImpl implements IAccountService {
         newAccounts.setAccountNumber(randomAccountNumber);
         newAccounts.setAccountType(AccountsConstants.SAVINGS);
         newAccounts.setBranchAddress(AccountsConstants.ADDRESS);
-        newAccounts.setCreatedAt(LocalDateTime.now());
-        newAccounts.setCreatedBy("Anonymous");
+
+       // this is automatically managed by spring auditor
+        // newAccounts.setCreatedAt(LocalDateTime.now());
+        // newAccounts.setCreatedBy("Anonymous");
         return newAccounts;
 
     }
