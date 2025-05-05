@@ -152,8 +152,8 @@ public ResponseEntity<ResponseDTO> updateAccount(@Valid @RequestBody CustomerDTO
        .body(new ResponseDTO(AccountsConstants.status_200, AccountsConstants.MESSAGE_200));
     }else{
         return ResponseEntity
-       .status(HttpStatus.INTERNAL_SERVER_ERROR)
-       .body(new ResponseDTO(AccountsConstants.status_500, AccountsConstants.MESSAGE_500));    }
+       .status(HttpStatus.EXPECTATION_FAILED)
+       .body(new ResponseDTO(AccountsConstants.STATUS_417, AccountsConstants.MESSAGE_417_UPDATE));    }
 
 }
 
@@ -190,8 +190,8 @@ public ResponseEntity<ResponseDTO> updateAccount(@Valid @RequestBody CustomerDTO
     .body(new ResponseDTO(AccountsConstants.status_200, AccountsConstants.MESSAGE_200));
    }else{
     return ResponseEntity
-    .status(HttpStatus.INTERNAL_SERVER_ERROR)
-    .body(new ResponseDTO(AccountsConstants.status_500, AccountsConstants.MESSAGE_500)); 
+    .status(HttpStatus.EXPECTATION_FAILED)
+    .body(new ResponseDTO(AccountsConstants.STATUS_417, AccountsConstants.MESSAGE_417_DELETE)); 
    }
   }
 
